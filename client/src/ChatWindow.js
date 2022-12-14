@@ -1,7 +1,15 @@
+import { useState } from "react";
 import styled from "styled-components"
 
 const ChatWindow = () => {
 
+    const [state, setState]=useState({message:""}); 
+
+    const handleChange= (ev, key)=> {
+        setState({state, [key]: ev.target.value})
+    };
+
+    console.log(state)
 
     return (
         <>
@@ -14,7 +22,12 @@ const ChatWindow = () => {
             <ChatBox id="chatbox"></ChatBox>
  
             <form name="message" action="">
-                <input name="usermsg" type="text" id="usermsg" />
+                <input 
+                onChange={(ev)=> handleChange(ev, "name")}
+                value={state.message}
+                type="text" 
+                className="message"
+                />
                 <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
             </form>
         </Wrapper>
