@@ -1,8 +1,8 @@
 import { BrowserRouter as Router,  Routes,  Route,} from "react-router-dom";
 import ChatMessenger from "./ChatMessenger";
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
-const socket = io.connect('http://localhost:3000');
+// const socket = io.connect('http://localhost:3000');
 
 const App = () => {
 
@@ -10,7 +10,7 @@ const App = () => {
   return (
     <Router>
         <Routes>
-          <Route path="/" element={<ChatMessenger socket={socket} />}/>
+          <Route path="/" element={<ChatMessenger  />}/>
         </Routes>
   </Router>
   )
