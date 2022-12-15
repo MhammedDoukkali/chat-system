@@ -1,35 +1,18 @@
-import { useState } from "react";
 import styled from "styled-components"
+import ChatBar from "./ChatBar";
+import ChatKeyboard from "./ChatKeyboard";
 
 const ChatWindow = () => {
 
-    const [state, setState]=useState({message:""}); 
-
-    const handleChange= (ev, key)=> {
-        setState({state, [key]: ev.target.value})
-    };
-
-    console.log(state)
-
     return (
         <>
+            <ChatBar/>
      <Wrapper>
-            <div id="menu">
-                <p class="welcome">Welcome, <b></b></p>
-                {/* <p class="logout"><a id="exit" href="#">Exit Chat</a></p> */}
+            <div>
+                <p>Welcome, <b></b></p>
             </div>
- 
-            <ChatBox id="chatbox"></ChatBox>
- 
-            <form name="message" action="">
-                <input 
-                onChange={(ev)=> handleChange(ev, "name")}
-                value={state.message}
-                type="text" 
-                className="message"
-                />
-                <input name="submitmsg" type="submit" id="submitmsg" value="Send" />
-            </form>
+            <ChatBox/>
+            <ChatKeyboard/>
         </Wrapper>
         </>
     )
@@ -55,7 +38,8 @@ text-align: left;
 const Wrapper=styled.div`
     margin: 0 auto;
     padding-bottom: 25px;
-    background: #eee;
+    background: #0d2d3c;
+    color:white; 
     width: 600px;
     max-width: 100%;
     border: 2px solid #212121;
