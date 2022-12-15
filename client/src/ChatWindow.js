@@ -2,7 +2,7 @@ import styled from "styled-components"
 import ChatBar from "./ChatBar";
 import ChatKeyboard from "./ChatKeyboard";
 
-const ChatWindow = () => {
+const ChatWindow = ({socket}) => {
 
     return (
         <>

@@ -8,6 +8,11 @@ const http = require('http').Server();
 const cors = require('cors');
 const PORT = 4000;
 
+const socketIO = require('socket.io')(http, {
+    cors: {
+        origin: "http://localhost:3000"
+    }
+})
 
 express()
 
@@ -17,17 +22,21 @@ express()
     .use(cors())
 
     // add Socket.io to the project to create a real-time connection
-    const io = require('socket.io')(http, {
-        cors: {
-            origin: "http://localhost:3000"
-        }
-    })
 
-    io.on('connection', (socket) => {
+    socketIO.on('connection', (socket) => {
         console.log(`⚡: ${socket.id} user just connected!`);
-        socket.on('disconnect', () => {
-          console.log('🔥: A user disconnected');
-        });
+        // socket.on('disconnect', () => {
+        //   console.log('🔥: A user disconnected');
+        // });
+        socket.on("message", data => {
+            socketIO.emit("messageResponse", data)
+          })
+
+
+
+
+
+
     })
 
 //Endpoints 
